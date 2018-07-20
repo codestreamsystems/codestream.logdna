@@ -9,6 +9,8 @@
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <FileVersion>1.0.1.0</FileVersion>
     <RepositoryType>GitHub</RepositoryType>
+    <PackageProjectUrl>https://github.com/codestreamsystems/codestream.logdna</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/codestreamsystems/codestream.logdna</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
