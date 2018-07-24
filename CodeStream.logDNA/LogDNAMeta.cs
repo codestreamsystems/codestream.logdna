@@ -7,7 +7,6 @@
             Message = message;
         }
         public string LoggedOnUser { get; set; }
-        public string CorrelationId { get; set; }
         public bool MessageSucceeded { get; set; }
         public T Message { get; set; }
         public string MessageFailures { get; set; }
