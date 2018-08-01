@@ -64,5 +64,20 @@ namespace CodeStream.logDNA
         {
             LogLine(Level.ERROR, line);
         }
+
+        public void LogError(Exception ex, string requestInfo, string requestContent, string correlationId)
+        {
+            LogObjectError(new LogDNAMeta<ExceptionInfo>(new ExceptionInfo(ex, requestInfo, requestContent, correlationId)));
+        }
+
+        public void LogError(Exception ex, string requestInfo, string requestContent)
+        {
+            LogObjectError(new LogDNAMeta<ExceptionInfo>(new ExceptionInfo(ex, requestInfo, requestContent)));
+        }
+
+        public void LogError(Exception ex, string correlationId)
+        {
+            LogObjectError(new LogDNAMeta<ExceptionInfo>(new ExceptionInfo(ex, correlationId)));
+        }
     }
 }

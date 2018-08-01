@@ -1,4 +1,6 @@
-﻿namespace CodeStream.logDNA
+﻿using System;
+
+namespace CodeStream.logDNA
 {
     public interface ILogDNALogger
     {
@@ -12,6 +14,8 @@
         void LogLineDebug(string line);
         void LogLineWarn(string line);
         void LogLineError(string line);
-
+        void LogError(Exception ex, string requestInfo, string requestContent, string correlationId);
+        void LogError(Exception ex, string requestInfo, string requestContent);
+        void LogError(Exception ex, string correlationId);
     }
 }
