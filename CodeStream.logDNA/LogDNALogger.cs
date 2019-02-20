@@ -9,6 +9,9 @@ namespace CodeStream.logDNA
         private readonly IApiClient logdna;
         private readonly string app;
 
+        private readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings
+            {PreserveReferencesHandling = PreserveReferencesHandling.Objects};
+
         public LogDNALogger(IApiClient logdna, string app)
         {
             this.logdna = logdna;
@@ -23,7 +26,7 @@ namespace CodeStream.logDNA
                 metatype = meta.Message.GetType().Name,
                 meta = meta
             };
-            logdna.AddLine(new LogLine(app, JsonConvert.SerializeObject(obj), DateTime.UtcNow));
+            logdna.AddLine(new LogLine(app, JsonConvert.SerializeObject(obj, jsonSettings), DateTime.UtcNow));
         }
 
         public void LogObjectInfo<T>(LogDNAMeta<T> meta)
@@ -46,7 +49,7 @@ namespace CodeStream.logDNA
         public void LogLine(Level level, string line)
         {
             var l = new LogDNALine(Level.INFO, line);
-            logdna.AddLine(new LogLine(app, JsonConvert.SerializeObject(l), DateTime.UtcNow));
+            logdna.AddLine(new LogLine(app, JsonConvert.SerializeObject(l, jsonSettings), DateTime.UtcNow));
         }
         public void LogLineInfo(string line)
         {
