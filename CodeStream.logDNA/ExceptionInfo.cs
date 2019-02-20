@@ -27,6 +27,13 @@ namespace CodeStream.logDNA
             CorrelationId = correlationId;
         }
 
+        public ExceptionInfo(string errorString, string correlationId)
+        {
+            ErrorString = errorString;
+            CorrelationId = correlationId;
+        }
+
+        public string ErrorString { get; set; }
         public Exception Exception { get; set; }
         public string RequestInfo { get; set; }
         public string RequestContent { get; set; }
