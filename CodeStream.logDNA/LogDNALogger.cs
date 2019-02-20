@@ -82,10 +82,5 @@ namespace CodeStream.logDNA
         {
             LogObjectError(new LogDNAMeta<ExceptionInfo>(new ExceptionInfo(ex, correlationId)));
         }
-
-        public void LogError(string error, string correlationId)
-        {
-            LogObjectError(new LogDNAMeta<ExceptionInfo>(new ExceptionInfo(error, correlationId)));
-        }
     }
 }

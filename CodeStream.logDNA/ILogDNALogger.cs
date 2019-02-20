@@ -17,6 +17,5 @@ namespace CodeStream.logDNA
         void LogError(Exception ex, string requestInfo, string requestContent, string correlationId);
         void LogError(Exception ex, string requestInfo, string requestContent);
         void LogError(Exception ex, string correlationId);
-        void LogError(string error, string correlationId);
     }
 }
