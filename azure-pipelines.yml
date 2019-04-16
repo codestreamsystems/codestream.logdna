@@ -46,7 +46,7 @@ steps:
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/t:pack /p:packageversion=$(buildVersion)'
 
-- powershell: Copy-Item -path "$(Build.SourcesDirectory)/**/*.nupkg" -Destination $(Build.ArtifactStagingDirectory)
+- powershell: copy $(Build.SourcesDirectory)/CodeStream.logDNA/bin/Release/CodeStream.LogDNA.$(buildVersion).nupkg $(Build.ArtifactStagingDirectory)/CodeStream.LogDNA.$(buildVersion).nupkg
   displayName: 'copy nupkg files into artifact folder'
 
 - task: NuGetCommand@2
