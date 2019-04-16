@@ -17,11 +17,22 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: Assembly-Info-NetFramework@2
+- task: Assembly-Info-NetCore@2
   inputs:
-    VersionNumber: $(buildVersionNumber)
-    FileVersionNumber: $(buildVersionNumber)
-    InformationalVersion: $(buildVersionNumber)
+    InsertAttributes: true
+    PackageId: 'CodeStream.LogDNA'
+    Authors: 'Allen Firth'
+    Company: 'CodeStream Systems'
+    Product: 'CodeStream LogDNA Classes'
+    Description: 'Helpful classes for RedBear.LOGDNA / LogDNA'
+    Copyright: 'Copyright © $(date:YYYY) $(date:DD.MM.YYYY DD MMMM YYYY HH:mm a) CodeStream Systems Pty Ltd'
+    PackageProjectUrl: 'https://github.com/codestreamsystems/codestream.logdna'
+    PackageIconUrl: 'https://www.codestream.co.za/img/CodeStream-05.png'
+    RepositoryUrl: 'https://github.com/codestreamsystems/codestream.logdna'
+    VersionNumber: '$(buildVersion)'
+    FileVersionNumber: '$(buildVersion)'
+    InformationalVersion: '$(buildVersion)'
+    PackageVersion: '$(buildVersion)'
 
 - task: VSBuild@1
   inputs:
@@ -29,11 +40,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: NuGetCommand@2
+- task: MSBuild@1
   inputs:
-    command: 'pack'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'buildVersion'
+    solution: '**/*.csproj'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/t:pack /p:packageversion=$(buildVersion)'
 
 - task: NuGetCommand@2
   inputs:
