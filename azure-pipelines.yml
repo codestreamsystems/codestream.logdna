@@ -46,8 +46,17 @@ steps:
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/t:pack /p:packageversion=$(buildVersion)'
 
+- powershell: Copy-Item -path "$(Build.SourcesDirectory)/**/*.nupkg" -Destination $(Build.ArtifactStagingDirectory)
+  displayName: 'copy nupkg files into artifact folder'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     nuGetFeedType: 'external'
     externalEndpoint: 'de0b499f-2eb5-4fb4-b76f-d2c12acb6053'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifact files'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'nuget-package-files'
