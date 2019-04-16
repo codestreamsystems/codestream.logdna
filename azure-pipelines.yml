@@ -32,7 +32,6 @@ steps:
     VersionNumber: '$(buildVersion)'
     FileVersionNumber: '$(buildVersion)'
     InformationalVersion: '$(buildVersion)'
-    PackageVersion: '$(buildVersion)'
 
 - task: VSBuild@1
   inputs:
