@@ -53,7 +53,7 @@ steps:
   inputs:
     command: 'push'
     nuGetFeedType: 'external'
-    externalEndpoint: 'de0b499f-2eb5-4fb4-b76f-d2c12acb6053'
+    externalEndpoint: 'oy2lcy73rd7mijzhpt6qebx3h7ybeklunkhz6cifvliucu'
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifact files'
