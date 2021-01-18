@@ -53,7 +53,7 @@ steps:
   inputs:
     command: 'push'
     nuGetFeedType: 'external'
-    externalEndpoint: 'oy2lcy73rd7mijzhpt6qebx3h7ybeklunkhz6cifvliucu'
+    externalEndpoint: 'nuget.org'
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifact files'
